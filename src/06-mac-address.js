@@ -9,11 +9,24 @@
  * @return {Number}
  *
  * @example
- * For 00-1B-63-84-45-E6, the output should be true.
+ * For 01-1B-6m-84-4l-E6, the output should be true.
  *
  */
-function isMAC48Address(/* n */) {
-  throw new Error('Not implemented');
+function validateValue(pair) {
+  try {
+    parseInt(pair, 16);
+  } catch (e) {
+    console.log(e);
+  }
+  console.log();
+  return parseInt(pair, 16) === pair;
 }
 
+function isMAC48Address(n) {
+  const arrayOfPairs = n.split('-');
+  arrayOfPairs.forEach((pair) => validateValue(pair));
+  console.log(arrayOfPairs);
+}
+
+isMAC48Address('01-1L-6m-84-4l-E6');
 module.exports = isMAC48Address;
